@@ -161,13 +161,21 @@
 	<div class="container">
 		<div class="row">
 			<section class="4u 12u$(medium) about">
-				<ul>
+				<ul style="list-style: none;">
 					<li><a href="#">Terms of Use</a></li>
 					<li><a href="#">Privacy Policy</a></li>
 					<li><a href="#">Contact Us</a></li>
 					<li><a href="#">Refund Policy</a></li>
 				</ul>
-					<p>&copy; <?php echo date("Y"); ?> JOSET. All rights reserved.</p>
+					<p>&copy; 
+						<?php function auto_copyright($year = 'auto'){ ?>
+							<?php if(intval($year) == 'auto'){ $year = date('Y'); } ?>
+							<?php if(intval($year) == date('Y')){ echo intval($year); } ?>
+							<?php if(intval($year) < date('Y')){ echo intval($year) . ' - ' . date('Y'); } ?>
+							<?php if(intval($year) > date('Y')){ echo date('Y'); } ?>
+						 <?php } ?>
+
+						JOSET. All rights reserved.</p>
 				
 			</section>
 			<section class="4u 6u(medium) 12u$(small)">
